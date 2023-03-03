@@ -18,11 +18,15 @@ namespace Math4GamedevRotate2D
 
         public void TransformRotate2D(Transform t, float degreesClockwise)
         {
-            float radiansAnticlockwise = -Mathf.Deg2Rad * degreesClockwise;
-            Vector3 p = t.up;
-            float x = p.x * Mathf.Cos(radiansAnticlockwise) - p.y * Mathf.Sin(radiansAnticlockwise);
-            float y = p.x * Mathf.Sin(radiansAnticlockwise) + p.y * Mathf.Cos(radiansAnticlockwise);
-            t.up = new Vector3(x, y, p.z);
+            Vector2 up2D = Rotate(t.up, -degreesClockwise);
+            t.up = new Vector3(up2D.x, up2D.y, t.up.z);
+
+            // Or with Quaternion...
+            //t.rotation *= Quaternion.AngleAxis(degreesClockwise, Vector3.back);
+
+            // Or with euler...
+            // Vector3 rot = t.rotation.eulerAngles;
+            // t.rotation = Quaternion.Euler(rot.x, rot.y, rot.z - degreesClockwise);
         }
     }
 }
