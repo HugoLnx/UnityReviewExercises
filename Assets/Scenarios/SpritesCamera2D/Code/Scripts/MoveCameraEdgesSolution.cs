@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveCameraEdgesSolution : MonoBehaviour
 {
     private const float AspectRatio = 16f/9f;
-    private const float CameraHeight = 5.4f;
+    private const float CameraHeight = 2.7f;
     private const float CameraWidth = CameraHeight * AspectRatio;
     [Button]
     public void MoveUp()
