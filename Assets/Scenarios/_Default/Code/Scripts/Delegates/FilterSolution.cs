@@ -6,12 +6,12 @@ namespace ReviewDelegates
 {
     public class FilterSolution<T>
     {
-        public delegate bool Predicate(T number);
-        public IEnumerable<T> FindAll(IEnumerable<T> numbers, Predicate predicate)
+        public delegate bool Predicate(T val);
+        public IEnumerable<T> FindAll(IEnumerable<T> values, Predicate predicate)
         {
-            foreach (T n in numbers)
+            foreach (T val in values)
             {
-                if (predicate(n)) yield return n;
+                if (predicate(val)) yield return val;
             }
         }
     }
