@@ -16,17 +16,21 @@ namespace Math4GamedevRotate2D
             return new Vector2(x, y);
         }
 
-        public void TransformRotate2D(Transform t, float degreesClockwise)
+        public void TransformRotate2DWithTransformDirectionVector(Transform t, float degreesClockwise)
         {
             Vector2 up2D = Rotate(t.up, -degreesClockwise);
             t.up = new Vector3(up2D.x, up2D.y, t.up.z);
+        }
 
-            // Or with Quaternion...
-            //t.rotation *= Quaternion.AngleAxis(degreesClockwise, Vector3.back);
+        public void TransformRotate2DWithQuaternion(Transform t, float degreesClockwise)
+        {
+            t.rotation *= Quaternion.AngleAxis(-degreesClockwise, Vector3.forward);
+        }
 
-            // Or with euler...
-            // Vector3 rot = t.rotation.eulerAngles;
-            // t.rotation = Quaternion.Euler(rot.x, rot.y, rot.z - degreesClockwise);
+        public void TransformRotate2DWithEulerAngles(Transform t, float degreesClockwise)
+        {
+            Vector3 rot = t.rotation.eulerAngles;
+            t.rotation = Quaternion.Euler(rot.x, rot.y, rot.z - degreesClockwise);
         }
     }
 }

@@ -11,7 +11,15 @@ namespace Math4GamedevRotate2D
             return Vector2.zero;
         }
 
-        public void TransformRotate2D(Transform t, float degreesClockwise)
+        public void TransformRotate2DWithTransformDirectionVector(Transform t, float degreesClockwise)
+        {
+        }
+
+        public void TransformRotate2DWithQuaternion(Transform t, float degreesClockwise)
+        {
+        }
+
+        public void TransformRotate2DWithEulerAngles(Transform t, float degreesClockwise)
         {
         }
     }

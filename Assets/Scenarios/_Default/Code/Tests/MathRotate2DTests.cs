@@ -36,7 +36,6 @@ public class MathRotate2DTests
 
     
     [Test]
-    [Category("Rotate2D")]
     public void Rotate2D_RotatesAVector()
     {
 
@@ -50,21 +49,56 @@ public class MathRotate2DTests
     }
 
     [Test]
-    [Category("TransformRotate2D")]
-    public void TransformRotate2D_RotatesATransform()
+    public void TransformRotate2D_WithTransformDirectionVector_RotatesATransform()
     {
         Transform t = new GameObject().transform;
 
         t.up = NormNorth;
-        MathRotate2D.TransformRotate2D(t, degreesClockwise: 90f);
+        MathRotate2D.TransformRotate2DWithTransformDirectionVector(t, degreesClockwise: 90f);
         Assert.That(t.up, Is.EqualTo(NormEastV3).Using(V3Comparer));
 
         t.up = NormNorth;
-        MathRotate2D.TransformRotate2D(t, degreesClockwise: -90f);
+        MathRotate2D.TransformRotate2DWithTransformDirectionVector(t, degreesClockwise: -90f);
         Assert.That(t.up, Is.EqualTo(NormWestV3).Using(V3Comparer));
 
         t.up = NormNorth;
-        MathRotate2D.TransformRotate2D(t, degreesClockwise: 180f);
+        MathRotate2D.TransformRotate2DWithTransformDirectionVector(t, degreesClockwise: 180f);
+        Assert.That(t.up, Is.EqualTo(NormSouthV3).Using(V3Comparer));
+    }
+
+    [Test]
+    public void TransformRotate2D_WithQuaternion_RotatesATransform()
+    {
+        Transform t = new GameObject().transform;
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithQuaternion(t, degreesClockwise: 90f);
+        Assert.That(t.up, Is.EqualTo(NormEastV3).Using(V3Comparer));
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithQuaternion(t, degreesClockwise: -90f);
+        Assert.That(t.up, Is.EqualTo(NormWestV3).Using(V3Comparer));
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithQuaternion(t, degreesClockwise: 180f);
+        Assert.That(t.up, Is.EqualTo(NormSouthV3).Using(V3Comparer));
+    }
+
+    [Test]
+    public void TransformRotate2D_WithEulerAngles_RotatesATransform()
+    {
+        Transform t = new GameObject().transform;
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithEulerAngles(t, degreesClockwise: 90f);
+        Assert.That(t.up, Is.EqualTo(NormEastV3).Using(V3Comparer));
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithEulerAngles(t, degreesClockwise: -90f);
+        Assert.That(t.up, Is.EqualTo(NormWestV3).Using(V3Comparer));
+
+        t.up = NormNorth;
+        MathRotate2D.TransformRotate2DWithEulerAngles(t, degreesClockwise: 180f);
         Assert.That(t.up, Is.EqualTo(NormSouthV3).Using(V3Comparer));
     }
 }
