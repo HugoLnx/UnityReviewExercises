@@ -5,26 +5,16 @@ using UnityEngine;
 
 namespace AnimationRigging
 {
-    public class WizardShooter : MonoBehaviour
+    public abstract class WizardShooter : MonoBehaviour
     {
-        private AimTarget _aim;
         private WizardShooterRigging _rigging;
-        private WizardShooterInput _input;
+        private IWizardShooterInput _input;
 
-        private WizardShooterInput ShooterInput => _input ??= InputSetup();
+        protected IWizardShooterInput ShooterInput => _input ??= InputSetup();
+        private WizardShooterRigging Rigging => _rigging ??= GetComponent<WizardShooterRigging>();
 
-        private void Awake()
-        {
-            _aim = GetComponentInChildren<AimTarget>();
-            _rigging = GetComponent<WizardShooterRigging>();
-        }
-
-        private WizardShooterInput InputSetup()
-        {
-            _input = WizardShooterInput.Build(_aim);
-            _input.Enable();
-            return _input;
-        }
+        protected abstract IWizardShooterInput InputSetup();
+        protected abstract void ProcessAiming();
 
         private void Update()
         {
@@ -37,24 +27,19 @@ namespace AnimationRigging
         {
             if (ShooterInput.ToggleShooterWasPerformed)
             {
-                _rigging.ToggleShooterMode();
+                Rigging.ToggleShooterMode();
             }
-        }
-
-        private void ProcessAiming()
-        {
-            _aim.AimTo(ShooterInput.AimPosition);
         }
 
         private void ProcessShoot()
         {
             if (ShooterInput.ShootIsPressed)
             {
-                _rigging.ShootingStart();
+                Rigging.ShootingStart();
             }
             else
             {
-                _rigging.ShootingStop();
+                Rigging.ShootingStop();
             }
         }
     }

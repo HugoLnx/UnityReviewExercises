@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AnimationRigging
 {
-    public class WizardShooterInput
+    public class WizardShooterInputSolution : IWizardShooterInput
     {
         private readonly WizardRawInputSolution.PlayerActions _player;
         private readonly Camera _camera;
@@ -27,7 +27,7 @@ namespace AnimationRigging
             }
         }
 
-        public WizardShooterInput(WizardRawInputSolution.PlayerActions player, Camera camera, AimTarget targetOrigin)
+        public WizardShooterInputSolution(WizardRawInputSolution.PlayerActions player, Camera camera, AimTarget targetOrigin)
         {
             _player = player;
             _camera = camera;
@@ -39,7 +39,7 @@ namespace AnimationRigging
             _player.Enable();
         }
 
-        public static WizardShooterInput Build(AimTarget aimOrigin) => new(new WizardRawInputSolution().Player, Camera.main, aimOrigin);
+        public static WizardShooterInputSolution Build(AimTarget aimOrigin) => new(new WizardRawInputSolution().Player, Camera.main, aimOrigin);
         public static Vector3 WhereLineIntersectsPlane(Vector3 planeNormal, Vector3 planeOrigin, Vector3 lineOrigin, Vector3 lineEnd)
         {
             // Calculate the direction of the line
