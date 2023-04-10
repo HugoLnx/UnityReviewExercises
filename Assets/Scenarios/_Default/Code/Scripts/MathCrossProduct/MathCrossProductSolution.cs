@@ -16,7 +16,7 @@ namespace Math4GamedevCrossProduct
         }
         public bool IsClockWise(Vector3 from, Vector3 to)
         {
-            return CrossProduct(from, to).z < 0f;
+            return CrossProduct(from, to).z <= 0;
         }
     }
 }

@@ -50,7 +50,7 @@ public class MathCrossProductTests
     {
         Assert.True(MathCrossProduct.IsClockWise(from: North, to: Northeast));
         Assert.False(MathCrossProduct.IsClockWise(from: Northeast, to: North));
-        Assert.False(MathCrossProduct.IsClockWise(from: North, to: South));
+        Assert.True(MathCrossProduct.IsClockWise(from: North, to: South));
         Assert.False(MathCrossProduct.IsClockWise(from: North, to: Northwest));
         Assert.True(MathCrossProduct.IsClockWise(from: East, to: Southeast));
         Assert.True(MathCrossProduct.IsClockWise(from: Southwest, to: Northwest));
