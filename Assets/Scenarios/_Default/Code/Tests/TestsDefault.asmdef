@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "ReviewExercisesDefault"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
