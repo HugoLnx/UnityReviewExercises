@@ -135,10 +135,10 @@ public class LinqTests
     }
 
     [Test]
-    public void TestMultipliedBy2By3LessThan9()
+    public void TestMultipliedBy1By2By3LessThan9()
     {
         // SelectMany / Where
-        Assert.That(NumbersQuerier.MultipliedBy2By3LessThan9(), Is.EqualTo(new List<int>(){3, 6,  4, 8,  2, 4, 6,  5,  1, 2, 3,  3, 6,  2, 4, 6}));
+        Assert.That(NumbersQuerier.MultipliedBy1By2By3LessThan9(), Is.EqualTo(new List<int>(){3, 6,  4, 8,  2, 4, 6,  5,  1, 2, 3,  3, 6,  2, 4, 6}));
     }
 
     [Test]

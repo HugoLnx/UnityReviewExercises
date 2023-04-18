@@ -88,7 +88,7 @@ namespace ReviewLinq
             return new List<List<int>>();
         }
 
-        public List<int> MultipliedBy2By3LessThan9()
+        public List<int> MultipliedBy1By2By3LessThan9()
         {
             return _list;
         }

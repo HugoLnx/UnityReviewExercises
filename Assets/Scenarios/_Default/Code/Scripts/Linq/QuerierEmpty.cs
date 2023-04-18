@@ -88,7 +88,7 @@ namespace ReviewLinq
             return new List<List<int>>();
         }
 
-        public List<int> MultipliedBy2By3LessThan9()
+        public List<int> MultipliedBy1By2By3LessThan9()
         {
             return _list.SelectMany(n => new List<int>(){n, n*2, n*3}).Where(n => n < 9).ToList();
         }
